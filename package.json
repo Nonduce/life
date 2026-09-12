@@ -1,0 +1,16 @@
+{
+  "name": "nonduce-life",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Nonduce 的 F1、探店与摄影记录",
+  "scripts": {
+    "dev": "eleventy --serve --port=4321 --output=.cache/preview",
+    "build": "node scripts/clean.mjs && eleventy",
+    "check": "node scripts/check-site.mjs"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "3.1.6"
+  },
+  "engines": { "node": ">=22" }
+}

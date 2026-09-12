@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ description or site.description }}">
+  <meta name="theme-color" content="#ffffff">
+  <title>{% if title %}{{ title }} · {% endif %}{{ site.name }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | url }}">
+  <link rel="icon" href="{{ '/assets/favicon.svg' | url }}" type="image/svg+xml">
+  <link rel="canonical" href="{{ site.url }}{{ page.url | url }}">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到内容</a>
+  <header class="site-header shell">
+    <a class="brand" href="{{ '/' | url }}" aria-label="Nonduce life 首页"><span class="brand-mark">n.</span><span>NONDUCE<span class="brand-divider">/</span>LIFE</span></a>
+    <nav aria-label="主导航" class="main-nav">
+      <a href="{{ '/' | url }}" {% if page.url == '/' %}aria-current="page"{% endif %}>全部</a>
+      {% for category in site.categories %}<a href="{{ ('/' + category.slug + '/') | url }}" {% if activeCategory == category.slug or category.slug == currentCategory.slug %}aria-current="page"{% endif %}>{{ category.label }}</a>{% endfor %}
+      <a href="{{ '/about/' | url }}" {% if page.url == '/about/' %}aria-current="page"{% endif %}>关于</a>
+    </nav>
+  </header>
+  <main id="main" class="shell">{{ content | safe }}</main>
+  <footer class="site-footer shell"><a class="footer-wordmark" href="{{ '/' | url }}">life<span>.</span></a><p>© {{ site.author }} · 记录生活，不赶时间。</p><a href="https://nonduce.github.io/">学术主页 <span aria-hidden="true">↗</span></a></footer>
+</body>
+</html>

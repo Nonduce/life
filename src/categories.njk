@@ -1,0 +1,15 @@
+---
+layout: base.njk
+pagination:
+  data: site.categories
+  size: 1
+  alias: currentCategory
+permalink: /{{ currentCategory.slug }}/
+eleventyComputed:
+  title: "{{ currentCategory.label }}"
+  description: "{{ currentCategory.description }}"
+---
+<header class="page-heading"><span class="eyebrow">{{ currentCategory.number }} / {{ currentCategory.english }}</span><h1>{{ currentCategory.label }}记录<span class="heading-dot">.</span></h1><p>{{ currentCategory.description }}</p></header>
+{% set categoryEntries = collections.posts | categoryPosts(currentCategory.slug) %}
+<div class="section-heading"><h2>{{ currentCategory.label }} <span>{{ categoryEntries | length }} ENTRIES</span></h2>{% if categoryEntries | selectattr('data.sample') | list | length %}<span class="demo-note">包含示例记录</span>{% endif %}</div>
+<div class="category-grid">{% for post in categoryEntries %}{% set featured = false %}{% include 'card.njk' %}{% else %}<p class="empty-state">第一篇记录，还在路上。</p>{% endfor %}</div>

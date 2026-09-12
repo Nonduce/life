@@ -1,0 +1,11 @@
+---
+layout: base.njk
+---
+<nav class="breadcrumb" aria-label="面包屑"><a href="{{ '/' | url }}">全部记录</a><span aria-hidden="true">/</span><a href="{{ ('/' + currentCategory.slug + '/') | url }}">{{ currentCategory.label }}</a></nav>
+<article>
+  <header class="article-header"><div class="post-meta"><span class="category-label category-{{ category }}">{{ currentCategory.label }}</span><span class="meta-rule"></span><time datetime="{{ date | dateISO }}">{{ date | dateLabel }}</time><span>{{ location }}</span>{% if sample %}<span class="sample-tag">示例记录</span>{% endif %}</div><h1>{{ title }}</h1><p class="article-description">{{ description }}</p></header>
+  <figure class="article-cover"><img src="{{ cover | url }}" alt="{{ coverAlt }}" width="1200" height="800"><figcaption>{{ coverAlt }}{% if photoSource %} · 图片：<a href="{{ photoSource }}">{{ photographer }}</a>{% endif %}</figcaption></figure>
+  {% if sample %}<aside class="sample-notice">这是一篇展示页面样式的示例，文字和图片不代表 Nonduce 的真实经历。</aside>{% endif %}
+  <div class="article-body">{{ content | safe }}</div>
+  <nav class="article-end" aria-label="继续浏览"><a href="{{ ('/' + currentCategory.slug + '/') | url }}">返回{{ currentCategory.label }}记录</a><a href="{{ '/' | url }}">全部记录</a></nav>
+</article>

@@ -1,0 +1,11 @@
+{
+  "name": "Nonduce · life",
+  "author": "Nonduce",
+  "description": "F1 观赛、日常探店与摄影记录。",
+  "url": "https://nonduce.github.io",
+  "categories": [
+    { "slug": "f1", "label": "F1", "english": "AT THE TRACK", "number": "01", "description": "从发车灯熄灭，到方格旗挥动。留住赛道边的声音与瞬间。" },
+    { "slug": "food", "label": "探店", "english": "AROUND THE CORNER", "number": "02", "description": "一杯咖啡，一顿好饭。记录那些想再去一次的小店。" },
+    { "slug": "photography", "label": "摄影", "english": "THROUGH THE LENS", "number": "03", "description": "走慢一点，看看光落在哪里。用照片保存日常的另一种样子。" }
+  ]
+}

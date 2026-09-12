@@ -1,0 +1,15 @@
+---
+layout: base.njk
+description: Nonduce 的生活记录。F1 观赛、日常探店与摄影。
+---
+<section class="masthead" aria-labelledby="home-title">
+  <div class="masthead-title"><span class="eyebrow">A PERSONAL JOURNAL</span><h1 id="home-title">life<span>.</span></h1></div>
+  <div class="masthead-note"><h2>一些值得留住的日常。</h2><p>赛道的轰鸣，街角的咖啡，<br>还有快门按下的那一刻。</p><span class="masthead-edition">F1 / FOOD / PHOTOGRAPHY</span></div>
+</section>
+<section class="journal-section" aria-labelledby="journal-title">
+  <div class="section-heading"><h2 id="journal-title">最近记录 <span>THE JOURNAL</span></h2>{% if collections.posts | selectattr('data.sample') | list | length %}<span class="demo-note">包含示例记录</span>{% endif %}</div>
+  <div class="home-grid">{% for post in collections.posts %}{% set featured = loop.first %}{% include 'card.njk' %}{% endfor %}</div>
+</section>
+<section class="category-index" aria-label="按主题浏览">
+  {% for category in site.categories %}<a href="{{ ('/' + category.slug + '/') | url }}"><span class="index-number">{{ category.number }}</span><span class="index-title">{{ category.label }}<small>{{ category.english }}</small></span><span class="index-count">{{ collections.posts | categoryPosts(category.slug) | length }} 篇记录</span><span class="index-arrow" aria-hidden="true">↗</span></a>{% endfor %}
+</section>

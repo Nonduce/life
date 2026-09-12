@@ -1,0 +1,10 @@
+{% set category = site.categories | selectattr('slug', 'equalto', post.data.category) | first %}
+<article class="post-card{% if featured %} featured-card{% endif %}">
+  <a class="card-image-link" href="{{ post.url | url }}" tabindex="-1" aria-hidden="true"><img src="{{ post.data.cover | url }}" alt="{{ post.data.coverAlt }}" width="1200" height="800" {% if not featured %}loading="lazy"{% endif %} decoding="async"></a>
+  <div class="card-copy">
+    <div class="post-meta"><span class="category-label category-{{ category.slug }}">{{ category.label }}</span><span class="meta-rule"></span><time datetime="{{ post.date | dateISO }}">{{ post.date | dateLabel }}</time>{% if post.data.sample %}<span class="sample-tag">示例</span>{% endif %}</div>
+    <h2><a href="{{ post.url | url }}">{{ post.data.title }}</a></h2>
+    <p>{{ post.data.description }}</p>
+    <span class="location">{{ post.data.location }}</span>
+  </div>
+</article>

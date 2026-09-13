@@ -1,4 +1,4 @@
-{% set category = site.categories | selectattr('slug', 'equalto', post.data.category) | first %}
+{% set category = post.data.currentCategory | selectattr('slug', 'equalto', post.data.category) | first %}
 <article class="post-card{% if featured %} featured-card{% endif %}">
   <a class="card-image-link" href="{{ post.url | url }}" tabindex="-1" aria-hidden="true"><img src="{{ post.data.cover | url }}" alt="{{ post.data.coverAlt }}" width="1200" height="800" {% if not featured %}loading="lazy"{% endif %} decoding="async"></a>
   <div class="card-copy">
